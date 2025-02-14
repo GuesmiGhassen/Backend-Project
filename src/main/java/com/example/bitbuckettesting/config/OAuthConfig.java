@@ -34,11 +34,11 @@ public class OAuthConfig {
     private long expiryTime;
 
     public String getAccessToken() {
-//        if (accessToken == null || expiryTime < System.currentTimeMillis()) {
-//            fetchAccessToken();
-//        }
-//        return accessToken;
-        return "Sg2hUv_GpZiozT5-DW24bry-E3u1n6bZK0e_0dNepJN6-CpJNjAh3dkfKLhhw4d1wZseJ7Jglwz2RYfAkfjj4QBhbsa-iT-sR8ICDGuydFS0v1j7R0CUU5VVpGs6oau9vcoltUnVAHwvDqzVXUS7n5C1kCI=";
+        if (accessToken == null || expiryTime < System.currentTimeMillis()) {
+            fetchAccessToken();
+        }
+        return accessToken;
+        //return "b0a4WpMV67Noi7Hhf3Rn98iboM7UtsI6xMqk4X3x7k98Nu0VKEsk1xyUkJqTcpR_wAKKZwCgQ4iUfLTB58ptrgvry1FCJruF0KFW5bOxY5-4naNhALjgIVBTf7EZ9dpaaudc9BhCau9oXy-si6NcTba392x6";
     }
 
     private void fetchAccessToken() {
@@ -52,7 +52,7 @@ public class OAuthConfig {
 
         if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
             accessToken = (String) response.getBody().get("access_token");
-            expiryTime = System.currentTimeMillis() + ((Integer) response.getBody().get("expires_in")) * 4000;
+            expiryTime = System.currentTimeMillis() + ((Integer) response.getBody().get("expires_in")) * 8000;
         }
     }
 
